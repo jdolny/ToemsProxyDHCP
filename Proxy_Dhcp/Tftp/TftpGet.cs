@@ -20,20 +20,22 @@ namespace CloneDeploy_Proxy_Dhcp.Tftp
             {
                 return;
             }
-            var client = new TftpClient(tftpServer);
+            TftpMonitor.SetTftpStatus(tftpServer, true);
+            /*var client = new TftpClient(tftpServer);
 
             var transfer = client.Download("transfer-test.txt");
             transfer.RetryCount = 0;
             transfer.RetryTimeout = TimeSpan.FromSeconds(3);
             transfer.UserContext = tftpServer;
-
+            transfer.TransferMode = TftpTransferMode.octet;
             transfer.OnFinished += new TftpEventHandler(transfer_OnFinished);
             transfer.OnError += new TftpErrorHandler(transfer_OnError);
-
+ 
             Stream stream = new MemoryStream();
             transfer.Start(stream);
 
             TransferFinishedEvent.WaitOne();
+            */
         }
 
         static void transfer_OnError(ITftpTransfer transfer, TftpTransferError error)
